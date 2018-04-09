@@ -44,12 +44,49 @@ console.log(person instanceof Object);   //true
 ```
 
 
-## 关于作用域
+## 关于执行环境与作用域
+每个函数都有自己的执行环境。当执行流进入一个函数时，函数的环境就会被推入一个环境栈中。而在函数执行之后，栈将其环境弹出，把控制权返回给之前的执行环境。
+当代码在一个环境中执行时，会创建变量对象的作用域链。作用域链能够保证执行环境对变量和函数的有序访问。
+标识符的解析是沿着作用域链一级一级搜索的过程。作用域连的最前端是当前执行的代码所在的环境的变量对象，如果环境时函数，则将其活动对象作为变量对象，活动对象最开始只包含`arguments`对象。作用域链的下一个变量则是当前环境的外部环境，如此直到全局执行环境，即`window`。全局环境始终都是作用域链中的最后一个对象。
 
+``` javascript
+var color = "blue";
+function changeColor(){
+    if (color === "blue"){
+        color = "red";
+    } else {
+        color = "blue";
+    }
+}
+changeColor();
+console.log("Color is now " + color); //Color is now red
+```
+如上所示代码中，`changeColor()`的只作用域链包含两个对象，即自身变量对象（包含了`arguments`）和全局环境变量。所以函数内部能够访问到`color`。
+
+下边这个例子阐述了全局环境与局部环境中变量访问权限。
+``` javascript
+var color = "blue";
+// 这里只能访问color
+function changeColor(){
+    // 这里可以访问color和anotherColor，但不能访问tempColor
+    var anotherColor = "red";
+    function swapColors(){
+        // 这里可以访问color、anotherColor和tempColor
+        var tempColor = anotherColor;
+        anotherColor = color;
+        color = tempColor;        
+    }    
+    swapColors();
+}
+changeColor();
+```
+
+javascript中没有块级作用域的说法，不像类C语言中花括号中的代码都有自己的执行环境
+
+1. 执行环境有全局执行环境（也称为全局环境）和函数执行环境之分
+1. 每次进入一个新执行环境，都会创建一个用于搜索变量和函数的作用域链
+1. 函数的局部环境不仅有权访问函数作用域中的变量，而且有权访问其包含（父）环境，乃至全局环境
+1. 全局环境只能访问在全局环境中定义的变量和函数，而不能直接访问局部环境中的任何数据
+1. 变量的执行环境有助于确定应该何时释放内存。
 
 ## 关于内存
-
-
-## 小结
-
-
