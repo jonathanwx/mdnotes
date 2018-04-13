@@ -4,7 +4,7 @@
 
 这里用于保存一些笔记，包括以前所学的并在此进行系统地梳理，以及一些新get的技术或知识
 
-# Javascript篇(ES5)
-# 设计模式篇(Javascript)
-# Git篇
-# linux篇
+# [Javascript篇(ES5)](javascript)
+# [设计模式篇(Javascript)](javascript_design_pattern)
+# [Git篇](git)
+# [linux篇](linux)
