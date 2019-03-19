@@ -6,5 +6,16 @@
 
 # [Javascript篇(ES5)](javascript)
 # [设计模式篇(Javascript)](javascript_design_pattern)
+# [设计模式篇(Java)](design_pattern)
 # [Git篇](git)
 # [linux篇](linux)
+
+学习目标
+
+- [ ] 设计模式（进行中）
+- [ ] Spring Boot 消息队列
+- [ ] JVM
+- [ ] ES6
+- [ ] vue vuex 
+- [ ] css揭秘
+- [ ] mysql相关
